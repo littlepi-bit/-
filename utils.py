@@ -135,5 +135,7 @@ def get_school_score_by_province(pro_id,school_id):
     print(res)
     return res
 
+
+
 if __name__ == "__main__":
     print(get_school_score_by_province('51','32'))

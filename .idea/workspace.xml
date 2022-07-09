@@ -14,7 +14,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="2BauXA6g90lkQdE0kszCwlAOKKw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -23,6 +27,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -126,6 +131,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state width="1419" height="300" key="GridCell.Tab.1.right/0.0.1440.920@0.0.1440.920" timestamp="1657286789784" />
+    <state x="517" y="378" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1657342566487">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="517" y="378" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.920@0.0.1440.920" timestamp="1657342566487" />
     <state x="383" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1657328165591">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
