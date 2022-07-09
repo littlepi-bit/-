@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jinja2 Circulation Control</title>
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/echarts.min.js"></script>
+    <script src="../static/js/china.js" charset="utf8"></script>
+    <script src="../static/js/echarts-wordcloud.min.js"></script>
+    <link rel="stylesheet" href="../static/css/main.css">
+</head>
+<body>
+    <h1 style="color:white;"> {{id}} list: </h1>
+    {% for i in schools %}
+        <div >
+            <a style="color:white;" href="http://127.0.0.1:5000/school?id={{i[0]}}" target="_blank">
+                {{i[0]}}: {{i[1]}}
+            </a>
+        </div>
+    {% endfor %}
+    <div id="test"></div>
+    <script src="../static/js/province_c1.js"></script>
+    <script src="../static/js/controller2.js"></script>
+</body>
+</html>
