@@ -135,7 +135,15 @@ def get_school_score_by_province(pro_id,school_id):
     print(res)
     return res
 
-
+def get_level(school_id):
+    '''
+    :param school_id:学校id
+    :return: 获取学校的学术水平
+    '''
+    sql = 'select num_master,num_master2,num_doctor,num_doctor2,num_subject,num_lab,gbh_num from detail where id=%s'%school_id
+    res = query(sql)
+    print(res)
+    return res
 
 if __name__ == "__main__":
-    print(get_school_score_by_province('51','32'))
+    print(get_level('32'))

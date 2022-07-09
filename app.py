@@ -119,6 +119,17 @@ def getRound():
     print(judgeData)
     return jsonify({"round1": round1, "round2": round2, "round3": round3, "round4": round4})
 
+@app.route("/getLevel")
+def getLevel():
+    id = request.args.get("id")
+    level = utils.get_level(id)
+    master = [level[0][0]+level[0][1]]
+    doctor = [level[0][2]+level[0][3]]
+    subject = [level[0][4]]
+    lab = [level[0][5]]
+    gbh = [level[0][6]]
+    return jsonify({"master":master,"doctor":doctor,"subject":subject,"lab":lab,"gbh":gbh})
+
 @app.route("/ajax", methods=["get","post"])
 def hello_world3():
     name = request.values.get("name")

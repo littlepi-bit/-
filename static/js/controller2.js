@@ -102,7 +102,27 @@ function get_level(){
         },
         timeout:'10000',
         success:function(data){
-            level_Option.yAxis
+            level_Option.series[0].data = data.lab
+            level_Option.series[1].data = data.subject
+            level_Option.series[2].data = data.matcher
+            level_Option.series[3].data = data.dotor
+            // level_Option.series[4].data = data.gbh
+            level.setOption(level_Option)
+        }
+    })
+}
+
+function get_r1_data(){
+    $.ajax({
+        url:'/r1',
+        timeout:'10000',
+        success:function(data){
+            ec_right1_option.yAxis.data = data.city;
+            ec_right1_option.xAxis.data = data.confirm
+            ec_right1_option.series[0].data = data.confirm;
+            ec_right1.setOption(ec_right1_option)
+        },error:function(){
+
         }
     })
 }
@@ -110,7 +130,9 @@ function get_level(){
 get_round_data()
 get_school_data()
 get_school_score()
+get_level()
 
 setInterval(get_round_data,10000)
 setInterval(get_school_data,10000)
 setInterval(get_school_score,10000)
+setInterval(get_level,10000)

@@ -46,7 +46,7 @@ var level_Option = {
     yAxis: {
         type: 'category',
         inverse: true,
-        data: [],
+        data: ['重点'],
        
     },
     series: [{
