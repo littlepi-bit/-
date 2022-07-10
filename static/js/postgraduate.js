@@ -1,19 +1,9 @@
 var postgraduate = echarts.init(document.getElementById('postgraduate'),"dark",{
-    width:'300',
-    height:'300'
+    width:'290',
+    height:'290'
   });
 
-  postgraduate.n = 4.2
   var postgraduate_option = {
-      title: {
-        text: postgraduate.n.toString(),
-        left: 'center',
-        top: 'center',
-        textStyle:{
-          fontWeight:'bold',
-          fontSize:10
-        },
-      },
       tooltip: {
         formatter: '{a} <br/>{b} : {c}%'
       },
@@ -23,7 +13,9 @@ var postgraduate = echarts.init(document.getElementById('postgraduate'),"dark",{
           type: 'gauge',
           detail: {
             formatter: '{value}%',
-            
+            textStyle:{
+              fontSize:20
+            }
           },
           data: [
             {

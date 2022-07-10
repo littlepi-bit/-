@@ -1,19 +1,9 @@
 var abroad= echarts.init(document.getElementById('abroad'),"dark",{
-    width:'300',
-    height:'300'
+    width:'290',
+    height:'290'
   });
 
-  abroad.n = 4.2
   var abroad_option = {
-      title: {
-        text: abroad.n.toString(),
-        left: 'center',
-        top: 'center',
-        textStyle:{
-          fontWeight:'bold',
-          fontSize:10
-        },
-      },
       tooltip: {
         formatter: '{a} <br/>{b} : {c}%'
       },
@@ -23,7 +13,9 @@ var abroad= echarts.init(document.getElementById('abroad'),"dark",{
           type: 'gauge',
           detail: {
             formatter: '{value}%',
-            
+            textStyle:{
+              fontSize:20
+            }
           },
           data: [
             {

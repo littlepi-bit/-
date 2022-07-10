@@ -1,5 +1,7 @@
 var ec_right2 = echarts.init(document.getElementById('r2'), "dark");
  
+
+
 var ec_right2_option = {
     title : {
         text : "各种类型高校占比",
@@ -30,5 +32,10 @@ var ec_right2_option = {
         }
     ]
 };
+
+ec_right2.on('click',function(param){
+    alert(param.data.name+':'+param.data.value)
+    top.location.href="/type?id="+param.data.name;
+})
 
 ec_right2.setOption(ec_right2_option);

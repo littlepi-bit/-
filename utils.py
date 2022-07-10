@@ -109,7 +109,7 @@ def get_school_by_province(pro_id):
     :param pro_id:省份id
     :return: 该省的大学
     '''
-    sql = 'select id, name from detail where province = (select pro_name from province where pro_id = %s)'%pro_id
+    sql = 'select id, name,f985,f211,dual_class,level,type,province from detail where province = (select pro_name from province where pro_id = %s)'%pro_id
     res =query(sql)
     # print(res)
     return res
@@ -165,6 +165,16 @@ def get_jobrate(school_id):
     #print(res)
     return res
 
+def get_school_by_type(type):
+    '''
+    :param type:类型名称
+    :return:该类型的所有学校
+    '''
+    sql = "select id, name,f985,f211,dual_class,level,type from detail where type=%s"
+    print(sql)
+    res = query(sql,type)
+    return res
+
 
 if __name__ == "__main__":
-    print(get_jobrate('31'))
+    print(get_school_by_province('12'))

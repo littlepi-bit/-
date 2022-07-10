@@ -1,19 +1,10 @@
 var jobrate = echarts.init(document.getElementById('jobrate'),"dark",{
-    width:'300',
-    height:'300'
+    width:'290',
+    height:'290'
   });
 
   jobrate.n = 4.2
   var jobrate_option = {
-      title: {
-        text: jobrate.n.toString(),
-        left: 'center',
-        top: 'center',
-        textStyle:{
-          fontWeight:'bold',
-          fontSize:10
-        },
-      },
       tooltip: {
         formatter: '{a} <br/>{b} : {c}%'
       },
@@ -23,7 +14,9 @@ var jobrate = echarts.init(document.getElementById('jobrate'),"dark",{
           type: 'gauge',
           detail: {
             formatter: '{value}%',
-            
+            textStyle:{
+              fontSize:20
+            }
           },
           data: [
             {

@@ -40,7 +40,7 @@ var province_score_Option = {
     yAxis: [
       {
         type: 'value',
-        min:400
+        min:400,
       }
     ],
     series: [

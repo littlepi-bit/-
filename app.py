@@ -73,7 +73,8 @@ def getProvince():
     school = utils.get_school_by_province(id)
     kwargs = {
         "id": id,
-        "schools": school
+        "school": school,
+        "province":school[0][7]
     }
     return render_template("province.html", **kwargs)
 
@@ -108,10 +109,23 @@ def getSchool():
     }
     return render_template("school.html", **kwargs)
 
+@app.route("/type")
+def getSchoolByType():
+    type_id = request.args.get("id")+'类'
+    school = utils.get_school_by_type(type_id)
+    print(school)
+    kwargs = {
+        "id": type_id,
+        "school": school
+    }
+    return render_template("type.html",**kwargs)
+
 @app.route("/round")
 def getRound():
     id = request.args.get("id")
     judgeData = utils.get_round_data(id)
+    if judgeData == '':
+        return None
     round1 = float(judgeData[0][0])
     round2 = float(judgeData[0][1])
     round3 = float(judgeData[0][2])
@@ -123,6 +137,8 @@ def getRound():
 def getLevel():
     id = request.args.get("id")
     level = utils.get_level(id)
+    if level == '':
+        return None
     master = int(level[0][0]) + int(level[0][1])
     doctor = int(level[0][2]) + int(level[0][3])
     subject = [int(level[0][4])]
@@ -137,23 +153,26 @@ def getManrate():
     id = request.args.get("id")
     rate = utils.get_manrate(id)
     manRate,femaleRate = 0.0, 0.0
-    if rate[0][0]!='':
-        manRate = float(rate[0][0])
-    if rate[0][1] != '':
-        femaleRate = float(rate[0][1])
+    if rate != '':
+        if rate[0][0]!='':
+            manRate = float(rate[0][0])
+        if rate[0][1] != '':
+            femaleRate = float(rate[0][1])
     return jsonify({"manrate":manRate,"femalerate":femaleRate})
 
 @app.route("/getJobrate")
 def getJobrate():
     id = request.args.get("id")
     rate = utils.get_jobrate(id)
+    print(rate)
     jobrate,postgraduate,abroad = 0.0,0.0,0.0
-    if rate[0][0]!='':
-        jobrate = float(rate[0][0])
-    if rate[0][1]!='':
-        postgraduate = float(rate[0][1])
-    if rate[0][2] != '':
-        abroad = float(rate[0][2])
+    if rate != ():
+        if rate[0][0] != '':
+            jobrate = float(rate[0][0])
+        if rate[0][1] != '':
+            postgraduate = float(rate[0][1])
+        if rate[0][2] != '':
+            abroad = float(rate[0][2])
     print(jobrate)
     return jsonify({"jobrate":jobrate,"postgraduate":postgraduate,"abroad":abroad})
 

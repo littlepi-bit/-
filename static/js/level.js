@@ -1,6 +1,6 @@
 var level = echarts.init(document.getElementById('level'),"dark",{
     width: '600',
-    height: '430'
+    height: '400'
 });
 const labelOption = {
     show: true,
@@ -19,6 +19,7 @@ var level_Option = {
         textStyle : {
             color : 'white',
         },
+        top :'4%',
         left : 'center'
     },
     grid: {

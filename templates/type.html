@@ -10,27 +10,29 @@
     <link rel="stylesheet" href="../static/css/school.css">
 </head>
 <body>
-    <h1 style="color:black;font-size: 100px;font-weight: bolder;text-align: center;"> {{province}}</h1>
+    <h1 style="color:black;font-size: 100px;font-weight: bolder;text-align: center;"> {{id}}</h1>
     <table>
         <tbody>
             {% for i in school %}
         <tr style="color:black;align-items: center; left: 40%;">
             <td class="img"><img style="width:100px;" src="https://static-data.gaokao.cn/upload/logo/{{i[0]}}.jpg"> </td>
-            <td class="name" style="left: 40%;">
+            <td class="name" style="left: 40%; align-items: center;">
                 <a style="color:black;font-size: 40px;position:relative;" href="http://127.0.0.1:5000/school?id={{i[0]}}" target="_blank">
                 {{i[0]}}: {{i[1]}}
                 </a>
-                    <span style="display:inline-block;position:absolute; margin-left: 10%; font-size: 20px;">
+                    <div style="display:inline-block;position:absolute; margin-left: 5%; font-size: 20px;margin-top: -0.5%;">
                         {% if i[2] == '1' %}
-                        <div>985</div>
+                        <div style="background-color: red;text-align: center;">985</div>
                         {% endif %}
                         {% if i[3] == '1' %}
-                        <div>211</div>
+                        <div style="background-color: orange;text-align: center;">211</div>
                         {% endif %}
                         {% if i[4] %}
-                        <div>{{i[4]}}</div>
+                        <div style="background-color: yellowgreen;text-align: center;">{{i[4]}}</div>
                         {% endif %}
-                    </span>
+                        <div style="background-color: rgb(171, 226, 234) ;text-align: center;">{{i[6]}}</div>
+                        <div style="background-color: rgb(241, 200, 213) ;text-align: center;" >{{i[5]}}</div>
+                    </div>
             </td>
                 
         </tr>
