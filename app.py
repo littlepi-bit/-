@@ -81,7 +81,7 @@ def getProvince():
 def getSchoolByProvince():
     school_id = request.args.get("id")
     school = utils.get_school_by_province(school_id)
-    print(school)
+    #print(school)
     return {"school": school}
 
 @app.route("/getSchoolScore")
@@ -116,19 +116,46 @@ def getRound():
     round2 = float(judgeData[0][1])
     round3 = float(judgeData[0][2])
     round4 = float(judgeData[0][3])
-    print(judgeData)
+    #print(judgeData)
     return jsonify({"round1": round1, "round2": round2, "round3": round3, "round4": round4})
 
 @app.route("/getLevel")
 def getLevel():
     id = request.args.get("id")
     level = utils.get_level(id)
-    master = [level[0][0]+level[0][1]]
-    doctor = [level[0][2]+level[0][3]]
-    subject = [level[0][4]]
-    lab = [level[0][5]]
-    gbh = [level[0][6]]
-    return jsonify({"master":master,"doctor":doctor,"subject":subject,"lab":lab,"gbh":gbh})
+    master = int(level[0][0]) + int(level[0][1])
+    doctor = int(level[0][2]) + int(level[0][3])
+    subject = [int(level[0][4])]
+    lab = int(level[0][5])
+    gbh = int(level[0][6])
+    schoolLevel = [lab, subject, master, doctor]
+    # return jsonify({"master":master,"doctor":doctor,"subject":subject,"lab":lab,"gbh":gbh})
+    return jsonify({"schoolLevel": schoolLevel})
+
+@app.route("/getManrate")
+def getManrate():
+    id = request.args.get("id")
+    rate = utils.get_manrate(id)
+    manRate,femaleRate = 0.0, 0.0
+    if rate[0][0]!='':
+        manRate = float(rate[0][0])
+    if rate[0][1] != '':
+        femaleRate = float(rate[0][1])
+    return jsonify({"manrate":manRate,"femalerate":femaleRate})
+
+@app.route("/getJobrate")
+def getJobrate():
+    id = request.args.get("id")
+    rate = utils.get_jobrate(id)
+    jobrate,postgraduate,abroad = 0.0,0.0,0.0
+    if rate[0][0]!='':
+        jobrate = float(rate[0][0])
+    if rate[0][1]!='':
+        postgraduate = float(rate[0][1])
+    if rate[0][2] != '':
+        abroad = float(rate[0][2])
+    print(jobrate)
+    return jsonify({"jobrate":jobrate,"postgraduate":postgraduate,"abroad":abroad})
 
 @app.route("/ajax", methods=["get","post"])
 def hello_world3():

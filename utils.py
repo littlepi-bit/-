@@ -132,7 +132,7 @@ def get_school_score_by_province(pro_id,school_id):
     '''
     sql = 'select type,score,year from minscore where school_id=%s and pro_id = %s'%(school_id,pro_id)
     res = query(sql)
-    print(res)
+    #print(res)
     return res
 
 def get_level(school_id):
@@ -142,8 +142,29 @@ def get_level(school_id):
     '''
     sql = 'select num_master,num_master2,num_doctor,num_doctor2,num_subject,num_lab,gbh_num from detail where id=%s'%school_id
     res = query(sql)
-    print(res)
+    # print(res)
     return res
 
+def get_manrate(school_id): 
+    '''
+    :param school_id:学校id
+    :return: 获取男女比例
+    '''
+    sql = 'select men_rate,female_rate from detail where id = %s'%school_id
+    res =query(sql)
+    # print(res)
+    return res
+
+def get_jobrate(school_id):
+    '''
+    :param school_id:学校id
+    :return: 就业率、深造率、出国率
+    '''
+    sql = 'select jobrate,postgraduate,abroad from detail where id = %s'%school_id
+    res =query(sql)
+    #print(res)
+    return res
+
+
 if __name__ == "__main__":
-    print(get_level('32'))
+    print(get_jobrate('31'))

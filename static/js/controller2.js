@@ -102,27 +102,65 @@ function get_level(){
         },
         timeout:'10000',
         success:function(data){
-            level_Option.series[0].data = data.lab
-            level_Option.series[1].data = data.subject
-            level_Option.series[2].data = data.matcher
-            level_Option.series[3].data = data.dotor
+            // tmp = [data.lab,data.subject,data.matcher,data.doctor];
+            // console.log("tmp="+tmp);
+            level_Option.series[0].data = data.schoolLevel
+            // level_Option.series[1].data = data.subject
+            // level_Option.series[2].data = data.matcher
+            // level_Option.series[3].data = data.dotor
             // level_Option.series[4].data = data.gbh
-            level.setOption(level_Option)
+            level.setOption(level_Option);
         }
     })
 }
 
-function get_r1_data(){
-    $.ajax({
-        url:'/r1',
-        timeout:'10000',
-        success:function(data){
-            ec_right1_option.yAxis.data = data.city;
-            ec_right1_option.xAxis.data = data.confirm
-            ec_right1_option.series[0].data = data.confirm;
-            ec_right1.setOption(ec_right1_option)
-        },error:function(){
 
+function get_manrate_data(){
+    $.ajax({
+        url:'/getManrate',
+        timeout:'10000',
+        data:{
+            "id":getParam("id")
+        },
+        success:function(data){
+            var rs = [];
+            rs.push({
+                name:"男生占比",
+                value:data.manrate
+            })
+            rs.push({
+                name:"女生占比",
+                value:data.femalerate
+            })
+            manrate_option.series[0].data = rs;
+            manrate.setOption(manrate_option)
+        }
+    })
+}
+
+function get_jobrate_date(){
+    $.ajax({
+        url:'/getJobrate',
+        timeout:'10000',
+        data:{
+            'id':getParam("id")
+        },
+        success:function(data){
+            jobrate_option.series[0].data =[{
+                name:'就业率',
+                value: data.jobrate,
+            }];
+            jobrate.setOption(jobrate_option);
+            postgraduate_option.series[0].data = [{
+                name:'深造率',
+                value:data.postgraduate
+            }];
+            postgraduate.setOption(postgraduate_option);
+            abroad_option.series[0].data = [{
+                name:'出国率',
+                value:data.abroad
+            }];
+            abroad.setOption(abroad_option)
         }
     })
 }
@@ -131,8 +169,12 @@ get_round_data()
 get_school_data()
 get_school_score()
 get_level()
+get_manrate_data()
+get_jobrate_date()
 
 setInterval(get_round_data,10000)
 setInterval(get_school_data,10000)
 setInterval(get_school_score,10000)
 setInterval(get_level,10000)
+setInterval(get_manrate_data,10000)
+setInterval(get_jobrate_date,10000)

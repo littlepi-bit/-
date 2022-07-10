@@ -1,4 +1,7 @@
-var level = echarts.init(document.getElementById('level'),"dark");
+var level = echarts.init(document.getElementById('level'),"dark",{
+    width: '600',
+    height: '430'
+});
 const labelOption = {
     show: true,
     // rotate: 90,
@@ -16,8 +19,13 @@ var level_Option = {
         textStyle : {
             color : 'white',
         },
-        left : 'left'
+        left : 'center'
     },
+    grid: {
+        top: '18%',
+        left: '18%',//原来是10%，修改为20%
+        right: '2%',
+      },
       color: ['#3398DB'],
         tooltip: {
             trigger: 'axis',
@@ -46,7 +54,7 @@ var level_Option = {
     yAxis: {
         type: 'category',
         inverse: true,
-        data: ['重点'],
+        data: ['重点实验室',"国家重点学科","硕士点","博士点"],
        
     },
     series: [{
@@ -57,7 +65,6 @@ var level_Option = {
         data: [],
         type: 'bar',
         barMaxWidth:"60%",
-
     }]
 };
 level.setOption(level_Option);

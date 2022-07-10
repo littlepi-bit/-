@@ -104,7 +104,7 @@ body{
     position: absolute;
     width: 35%;
     height: 16%;
-    top: 30%;
+    top: 27%;
     left: 60%;
     border: 5px gray;
     border-style: outset;
@@ -147,13 +147,13 @@ body{
     width: 100%;
     height: 15%;
     top: 78%;
-    left: 5%;
+    left: 4%;
     color: white;
-    font-size: 15x;
+    font-size: 17px;
 }
 
 span.name1 {
-    margin-right:13%;
+    margin-right:13.5%;
 }
 
 span.name2 {
@@ -161,7 +161,7 @@ span.name2 {
 }
 
 span.name3 {
-    margin-right:13%;
+    margin-right:13.5%;
 }
 
 span.name4 {
@@ -171,8 +171,8 @@ span.name4 {
 #content{
     position: absolute;
     width: 90%;
-    height: 18%;
-    top: 5%;
+    height: 16%;
+    top: 2%;
     left: 5%;
     color: #fff;
 }
@@ -181,7 +181,7 @@ span.name4 {
     position: absolute;
     width: 30%;
     height: 45%;
-    top: 50%;
+    top: 53%;
     left: 2%;
 }
 
@@ -195,16 +195,46 @@ span.name4 {
 
 #level{
     position: absolute;
-    width: 40%;
-    height: 68%;
-    top: 32%;
-    left: 30%;
+    width: 60%;
+    height: 30%;
+    top: 53%;
+    left: 35%;
+}
+#manrate{
+    position: absolute;
+    width: 30%;
+    height: 55%;
+    top: 50%;
+    right: 0;
+}
+#jobrate{
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    top: 22%;
+    left: 6%;
+}
+
+#postgraduate{
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    top: 22%;
+    left: 24%;
+}
+
+#abroad{
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    top: 22%;
+    left: 42%;
 }
 
 .border_style{
     border: 10px #fff;
     border-style: inset;
-    padding: 10px;
+    padding: 8px;
 }
 
 .line{
