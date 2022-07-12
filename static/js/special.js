@@ -1,4 +1,4 @@
-var special = echarts.init(document.getElementById('special'), "dark");
+var special = echarts.init(document.getElementById('special'), null);
 special.hideLoading();
 var special_Option = {
     title: {
@@ -81,7 +81,7 @@ var special_Option = {
                 ]
             }
         ],
-        top: '4%',
+        top: '1%',
         left: '14%',
         bottom: '1%',
         right: '70%',

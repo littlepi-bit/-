@@ -1,4 +1,4 @@
-var round1 = echarts.init(document.getElementById('round1'),"dark",{
+var round1 = echarts.init(document.getElementById('round1'),null,{
   width:120,
   height:120
 });

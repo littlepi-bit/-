@@ -1,5 +1,5 @@
-var level = echarts.init(document.getElementById('level'),"dark",{
-    width: '600',
+var level = echarts.init(document.getElementById('level'),null,{
+    width: '500',
     height: '400'
 });
 const labelOption = {
@@ -17,7 +17,7 @@ var level_Option = {
     title : {
         text : "学术水平",
         textStyle : {
-            color : 'white',
+            color : 'black',
         },
         top :'4%',
         left : 'center'

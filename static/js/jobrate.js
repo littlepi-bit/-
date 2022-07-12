@@ -1,4 +1,4 @@
-var jobrate = echarts.init(document.getElementById('jobrate'),"dark",{
+var jobrate = echarts.init(document.getElementById('jobrate'),null,{
     width:'290',
     height:'290'
   });

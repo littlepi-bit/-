@@ -1,4 +1,4 @@
-var abroad= echarts.init(document.getElementById('abroad'),"dark",{
+var abroad= echarts.init(document.getElementById('abroad'),null,{
     width:'290',
     height:'290'
   });

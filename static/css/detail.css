@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    background-color: #100C2A;
+    background-color: #fff;
 }
 
 #title{
@@ -9,7 +9,7 @@ body{
     height: 10%;
     top: 0;
     left: 30%;
-    color: white;
+    color: black;
     font-size: 30px;
     display: flex;
     align-items: center;
@@ -22,12 +22,12 @@ body{
     height: 10%;
     top: 0;
     left: 10%;
-    color: white;
+    color: black;
     font-size: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    white-space:nowrap;
+    black-space:nowrap;
     /* word-break:break-all; */
     /* text-overflow:ellipsis;  */
     /* -o-text-overflow:ellipsis;  */
@@ -51,7 +51,7 @@ body{
     height: 30%;
     top: 10%;
     left: 30%;
-    color: white;
+    color: black;
 }
 
 .num{
@@ -124,7 +124,7 @@ body{
     height: 18%;
     top: 30%;
     left: 60%;
-    border: 5px gray;
+    border: 5px rgb(204, 239, 200);
     border-style: outset;
 }
 
@@ -166,7 +166,7 @@ body{
     height: 15%;
     top: 78%;
     left: 5%;
-    color: white;
+    color: black;
     font-size: 17px;
 }
 
@@ -291,14 +291,14 @@ input{
     top: 10%;
     float: right;
     background: black;
-    color: white;
+    color: black;
     text-align: center;
     line-height: 32px;
     cursor: pointer;
 }
 
 .border_style{
-    border: 10px #fff;
+    border: 10px rgb(137, 198, 219);
     border-style: inset;
     padding: 8px;
 }

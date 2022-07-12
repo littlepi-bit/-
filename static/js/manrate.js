@@ -1,10 +1,10 @@
-var manrate = echarts.init(document.getElementById('manrate'), "dark");
+var manrate = echarts.init(document.getElementById('manrate'), null);
  
 var manrate_option = {
     title : {
         text : "高校男女比例",
         textStyle : {
-            color : 'white',
+            color : 'black',
         },
         left : 'center',
         top : '8%'
@@ -24,7 +24,7 @@ var manrate_option = {
             itemStyle: {
                 normal: {
                     shadowBlur: 200,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    shadowColor: 'rgba(0, 0, 0, 0.3)'
                 }
             }
         }

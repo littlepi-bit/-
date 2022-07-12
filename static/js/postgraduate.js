@@ -1,4 +1,4 @@
-var postgraduate = echarts.init(document.getElementById('postgraduate'),"dark",{
+var postgraduate = echarts.init(document.getElementById('postgraduate'),null,{
     width:'290',
     height:'290'
   });

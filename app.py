@@ -116,12 +116,22 @@ def getSpecialscoreById():
     special_id = request.args.get("special_id")
     scores = utils.get_special_score(school_id, province_id, special_id)
     year, type, score, section = [], [], [], []
+    li, wen = False, False
+    num = 0
     for s in scores:
         year.append(s[0])
+        if s[1] == '1':
+            li = True
+        elif s[1] == '2':
+            wen = True
         type.append(s[1])
         score.append(s[2])
         section.append(s[3])
-    return jsonify({"year": year, "type": type, "score": score, "section": section})
+    if wen is True:
+        num += 1
+    if li is True:
+        num += 1
+    return jsonify({"year": year, "type": type, "score": score, "section": section, "li": li, "wen": wen, "num": num})
 
 @app.route("/specialscore")
 def Specialscore():
@@ -130,9 +140,14 @@ def Specialscore():
     special_id = request.args.get("special_id")
     scores = utils.get_special_score(school_id, province_id, special_id)
     school = utils.get_school_by_id(school_id)
+    spname = ''
+    if len(scores[0][4]) > 40:
+        spname = scores[0][4][:25]
+    else:
+        spname = scores[0][4]
     kwargs = {
         "school_name": school[0][0],
-        "spname": scores[0][4]
+        "spname": spname
     }
     return render_template("special.html", **kwargs)
 

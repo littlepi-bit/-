@@ -1,4 +1,4 @@
-var province_score = echarts.init(document.getElementById('score'), "dark");
+var province_score = echarts.init(document.getElementById('score'), null);
 
 var province_score_Option = {
     title: {

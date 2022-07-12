@@ -95,12 +95,12 @@ function get_school_score(){
                 minScore = Math.min(num, minScore);
             }
             for(s in data.wen){
-                num = Number(data.li[s])
+                num = Number(data.wen[s])
                 maxScore = Math.max(num, maxScore);
                 minScore = Math.min(num, minScore);
             }
-            province_score_Option.yAxis[0].min = minScore-50-Math.round((minScore-50)%100)
-            province_score_Option.yAxis[0].max = maxScore+50-Math.round((maxScore+50)%100)
+            province_score_Option.yAxis[0].min = minScore-100-Math.round((minScore-100)%100)
+            province_score_Option.yAxis[0].max = maxScore+100-Math.round((maxScore+100)%100)
             province_score_Option.series[0].data = data.li;
             province_score_Option.series[1].data = data.wen;
             province_score.setOption(province_score_Option);
