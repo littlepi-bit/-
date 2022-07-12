@@ -230,6 +230,22 @@ span.name4 {
     left: 40%;
 }
 
+#special{
+    position: absolute;
+    width: 90%;
+    height: 600%;
+    top: 110%;
+    left: 5%;
+}
+
+#specialscore{
+    position: absolute;
+    width: 90%;
+    height: 70%;
+    top: 20%;
+    left: 5%;
+}
+
 .border_style{
     border: 10px #fff;
     border-style: inset;

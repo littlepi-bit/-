@@ -41,6 +41,8 @@ var province_score_Option = {
       {
         type: 'value',
         min:400,
+        max:800,
+        intervel:50,
       }
     ],
     series: [

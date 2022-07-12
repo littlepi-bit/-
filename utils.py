@@ -175,6 +175,62 @@ def get_school_by_type(type):
     res = query(sql,type)
     return res
 
+def get_special(school_id):
+    '''
+    :param school_id:学校id
+    :return: 该学校的所有专业
+    '''
+    pro_id = '51'
+    sql = 'select level1,level2,spname,school_id,province_id,special_id from specialscore where school_id=%s and province_id=%s group by spname'%(school_id,pro_id)
+    res = query(sql)
+    level1 = {}
+    for tmp in res:
+        if tmp[0] not in level1:
+            level1[tmp[0]] = {}
+        if tmp[1] not in level1[tmp[0]]:
+            level1[tmp[0]][tmp[1]] = []
+        level1[tmp[0]][tmp[1]].append({"spname": tmp[2],"school_id":tmp[3],"province_id":tmp[4],"special_id":tmp[5]})
+    return level1
+
+def get_special_score_li(school_id):
+    '''
+    :param school_id:学校id
+    :return: 返回该学校所有专业的历年分数
+    '''
+    pro_id = '51'
+    sql = 'select year,spname,score,section from specialscore where school_id=%s and province_id=%s and type = 1'%(school_id,pro_id)
+    res = query(sql)
+    return res
+
+def get_special_score_wen(school_id):
+    '''
+    :param school_id:学校id
+    :return: 返回该学校所有专业的历年分数
+    '''
+    pro_id = '51'
+    sql = 'select year,level1,level2,spname,score,section from specialscore where school_id=%s and province_id=%s and type = 2'%(school_id,pro_id)
+    res = query(sql)
+    level1 = {}
+    print(res)
+    for tmp in res:
+        if tmp[1] not in level1:
+            level1[tmp[1]] = {}
+        if tmp[2] not in level1[tmp[1]]:
+            level1[tmp[1]][tmp[2]] = []
+        level1[tmp[1]][tmp[2]].append({"year":tmp[0],"spname":tmp[3],"section":tmp[4]})
+    return level1
+
+def get_special_score(school_id,province_id,special_id):
+    '''
+    :param school_id: 学校id
+    :param province_id: 省份id
+    :param special_id: 专业id
+    :return: 获取该专业在该学校该省份3年的分数线
+    '''
+    sql = 'select year,type,score,section,spname from specialscore where school_id=%s and province_id=%s and special_id=%s'%(school_id,province_id,special_id)
+    res = query(sql)
+    return res
+
 
 if __name__ == "__main__":
-    print(get_school_by_province('12'))
+    print(get_special_score('31','51','572241'))

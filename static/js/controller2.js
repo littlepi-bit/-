@@ -87,6 +87,20 @@ function get_school_score(){
         timeout:'10000',
         success:function(data){
             province_score_Option.xAxis = data.year;
+            let minScore = 800;
+            let maxScore = 0;
+            for(s in data.li){
+                num = Number(data.li[s])
+                maxScore = Math.max(num, maxScore);
+                minScore = Math.min(num, minScore);
+            }
+            for(s in data.wen){
+                num = Number(data.li[s])
+                maxScore = Math.max(num, maxScore);
+                minScore = Math.min(num, minScore);
+            }
+            province_score_Option.yAxis[0].min = minScore-50-Math.round((minScore-50)%100)
+            province_score_Option.yAxis[0].max = maxScore+50-Math.round((maxScore+50)%100)
             province_score_Option.series[0].data = data.li;
             province_score_Option.series[1].data = data.wen;
             province_score.setOption(province_score_Option);
@@ -165,12 +179,101 @@ function get_jobrate_date(){
     })
 }
 
+function get_special_score(){
+    $.ajax({
+        url:"/getSchoolSpecial",
+        timeout:'10000',
+        data:{
+            'id':getParam("id")
+        },
+        success:function(data){
+            res = [{
+                "children":[],
+                "name":"专业"
+            }];
+            let allNode = 0;
+            rs = [];
+            index1 = 0;
+            index2 = 0;
+            // console.log("data");
+            // console.log(data);
+            for(var k in data){
+                rs.push({
+                    "children":[],
+                    "name":k
+                });
+                children2 = [];
+                for(m in data[k]){
+                    // console.log("m="+m)
+                    // console.log(data[k][m])
+                    level2 = "大班";
+                    if(m!=''){
+                        level2 = m
+                    };
+                    children2.push({
+                        "children":[],
+                        "name":level2
+                    });
+                    children3 = [];
+                    for(s in data[k][m]){
+                        children3.push({
+                            "value":{
+                                "school":data[k][m][s].school_id,
+                                "province":data[k][m][s].province_id,
+                                "special":data[k][m][s].special_id,
+                            },
+                            "name":data[k][m][s].spname
+                        })
+                        allNode++;
+                        // rs.push({
+                        //     "children":[
+                        //         {
+                        //             "children":[
+                        //                 {
+                        //                     "children":[],
+                        //                     "name":data[k][m][s].spname
+                        //                 }
+                        //             ],
+                        //             "name":level2
+                        //         }
+                        //     ],
+                        //     "name": k
+                        // })
+                    }
+                    console.log("children2");
+                    console.log(children2[index2]);
+                    if(children2[index2] == undefined){
+                        continue;
+                    }
+                    children2[index2]["children"] = children3;
+                    index2++;
+                }
+                rs[index1++]["children"] = children2;
+            }
+            res[0]["children"] = rs;
+            console.log("rs=");
+            console.log(rs);
+            special_Option.series[0].data = res;
+            special.setOption(special_Option);
+            const height = window.innerHeight;
+            const currentHeight = 35 * allNode;
+            const newWidth = Math.max(currentHeight, height);
+            special.style.width = window.innerWidth + 'px';
+            special.style.height = newWidth + 'px';
+            special.resize({
+                height: newHeight
+            });
+        }
+    })
+}
+
 get_round_data()
 get_school_data()
 get_school_score()
 get_level()
 get_manrate_data()
 get_jobrate_date()
+get_special_score()
 
 setInterval(get_round_data,10000)
 setInterval(get_school_data,10000)
@@ -178,3 +281,4 @@ setInterval(get_school_score,10000)
 setInterval(get_level,10000)
 setInterval(get_manrate_data,10000)
 setInterval(get_jobrate_date,10000)
+setInterval(get_special_score,10000)

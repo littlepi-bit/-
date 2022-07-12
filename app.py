@@ -53,19 +53,19 @@ def get_r1_data():
         # v = int(v.quantize(Decimal('0')))
         confirm.append(v)
     #print(confirm)
-    return jsonify({"city":city,"confirm":confirm})
+    return jsonify({"city": city, "confirm": confirm})
 
 @app.route("/r2")
 def get_r2_data():
     datas = utils.get_r2_data()
-    name,value = [],[]
+    name, value = [], []
     for data in datas:
         name.append(data[0])
-        v= data[1]
+        v = data[1]
         v = int(v.quantize(Decimal('0')))
         value.append(v)
-    #print(value)
-    return jsonify({"name":name,"value":value})
+    # print(value)
+    return jsonify({"name": name, "value": value})
 
 @app.route("/province")
 def getProvince():
@@ -74,7 +74,7 @@ def getProvince():
     kwargs = {
         "id": id,
         "school": school,
-        "province":school[0][7]
+        "province": school[0][7]
     }
     return render_template("province.html", **kwargs)
 
@@ -82,14 +82,14 @@ def getProvince():
 def getSchoolByProvince():
     school_id = request.args.get("id")
     school = utils.get_school_by_province(school_id)
-    #print(school)
+    # print(school)
     return {"school": school}
 
 @app.route("/getSchoolScore")
 def getSchoolScore():
     school_id = request.args.get("id")
-    scores = utils.get_school_score_by_province('51',school_id)
-    year,li,wen = [],[],[]
+    scores = utils.get_school_score_by_province('51', school_id)
+    year, li, wen = [], [], []
     for score in scores:
         if score[0] == '1':
             li.append(score[1])
@@ -97,7 +97,7 @@ def getSchoolScore():
             wen.append(score[1])
         if score[2] not in year:
             year.append(score[2])
-    return jsonify({"li":li,"wen":wen,"year":year})
+    return jsonify({"li": li, "wen": wen, "year": year})
 
 @app.route("/school")
 def getSchool():
@@ -105,9 +105,49 @@ def getSchool():
     school = utils.get_school_by_id(school_id)
     kwargs = {
         "id": school_id,
-        "school":school
+        "school": school
     }
     return render_template("school.html", **kwargs)
+
+@app.route("/getSpecialscore")
+def getSpecialscoreById():
+    school_id = request.args.get("school_id")
+    province_id = request.args.get("province_id")
+    special_id = request.args.get("special_id")
+    scores = utils.get_special_score(school_id, province_id, special_id)
+    year, type, score, section = [], [], [], []
+    for s in scores:
+        year.append(s[0])
+        type.append(s[1])
+        score.append(s[2])
+        section.append(s[3])
+    return jsonify({"year": year, "type": type, "score": score, "section": section})
+
+@app.route("/specialscore")
+def Specialscore():
+    school_id = request.args.get("school_id")
+    province_id = request.args.get("province_id")
+    special_id = request.args.get("special_id")
+    scores = utils.get_special_score(school_id, province_id, special_id)
+    school = utils.get_school_by_id(school_id)
+    kwargs = {
+        "school_name": school[0][0],
+        "spname": scores[0][4]
+    }
+    return render_template("special.html", **kwargs)
+
+# @app.route("/getSpecialscore")
+# def getSpecialscore():
+#     school_id = request.args.get("id")
+#     specialscoreLi = utils.get_special_score_li(school_id)
+#     specialscoreWen = utils.get_special_score_wen(school_id)
+#     return jsonify({"specialscoreLi":specialscoreLi,"specialscoreWen":specialscoreWen})
+
+@app.route("/getSchoolSpecial")
+def getSchoolSpecial():
+    school_id = request.args.get("id")
+    special = utils.get_special(school_id)
+    return special
 
 @app.route("/type")
 def getSchoolByType():

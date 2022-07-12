@@ -20,17 +20,19 @@
                 <a style="color:black;font-size: 40px;position:relative;" href="http://127.0.0.1:5000/school?id={{i[0]}}" target="_blank">
                 {{i[0]}}: {{i[1]}}
                 </a>
-                    <span style="display:inline-block;position:absolute; margin-left: 10%; font-size: 20px;">
-                        {% if i[2] == '1' %}
-                        <div>985</div>
-                        {% endif %}
-                        {% if i[3] == '1' %}
-                        <div>211</div>
-                        {% endif %}
-                        {% if i[4] %}
-                        <div>{{i[4]}}</div>
-                        {% endif %}
-                    </span>
+                <div style="display:inline-block;position:absolute; margin-left: 5%; font-size: 20px;margin-top: -0.5%;">
+                    {% if i[2] == '1' %}
+                    <div style="background-color: red;text-align: center;">985</div>
+                    {% endif %}
+                    {% if i[3] == '1' %}
+                    <div style="background-color: orange;text-align: center;">211</div>
+                    {% endif %}
+                    {% if i[4] %}
+                    <div style="background-color: yellowgreen;text-align: center;">{{i[4]}}</div>
+                    {% endif %}
+                    <div style="background-color: rgb(171, 226, 234) ;text-align: center;">{{i[6]}}</div>
+                    <div style="background-color: rgb(241, 200, 213) ;text-align: center;" >{{i[5]}}</div>
+                </div>
             </td>
                 
         </tr>
